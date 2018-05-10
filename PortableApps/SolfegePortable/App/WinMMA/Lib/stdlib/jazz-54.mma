@@ -1,0 +1,104 @@
+
+// jazz-54
+
+Doc  A 5/4 jazz beat, written for "Take Five".
+
+Author Bob van der Poel
+
+SeqClear
+Time 5
+Timesig 5 4
+Include stdpats54
+
+////////// Do all the defs first.
+ 
+Begin Drum Define
+	D3'45	3.5 0 90 ; D45
+	Dsnare  1 0 90   ; 2.5 0 80 ;  3.5 0 80 ; 4 0 90 
+	Dlow	1 0 90   ; 3.5 0 80 ;  4   0 90
+End
+
+
+////////////////////////
+// 5/4 Jazz
+
+
+SeqSize 4
+
+Begin Bass
+	Sequence  B145
+	Accent 1 10
+	Voice AcousticBass
+	Octave 3
+	Rskip 5
+	Rvolume 10
+	Rtime 3
+	Articulate 90
+End
+
+Begin Drum-HH
+	Sequence D12345
+	Tone OpenHiHat
+	Volume p
+	Rvolume 30
+End
+
+Begin Drum-Snare
+	Sequence Dsnare
+	Tone SnareDrum1
+	Volume mp
+	Rskip 40
+	Rvolume 10
+End
+
+Begin Drum-Tom
+	Sequence Dlow
+	Tone LowTom1
+	Volume p
+	RSkip 40
+	Rvolume 20
+End
+	
+Begin Chord
+	Sequence C25 / / C245
+	SeqRnd On
+	Voicing    Mode=Optimal  Rmove=20
+	DupRoot -1
+	Octave 4
+	Volume mp
+	Voice Piano1
+	Articulate 90
+	Rvolume 30
+	Rskip 10
+End
+
+DefGroove Jazz54        Basic 5/4 jazz rhythm. 
+
+Bass Sequence -
+
+Begin Walk
+	Voice $_Bass_Voice
+	Octave $_Bass_Octave
+	Sequence  W12345
+	Rskip 5
+	Rvolume 10
+	Rtime 3
+	Articulate 99
+End
+
+DefGroove Jazz54Walk    This replaces the straight bass pattern \
+                        with a five-to-the-bar walking bass.
+
+
+////// A 1 bar intro
+
+SeqClear
+SeqSize 1
+
+Drum-HH     Sequence D12345
+Drum-Snare  Sequence D1
+Drum-Tom    Sequence D3'45
+
+DefGroove Jazz54Intro   Single bar intro for 5/4 jazz. Can be used as ending?
+
+	

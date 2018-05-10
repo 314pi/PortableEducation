@@ -1,0 +1,208 @@
+
+// dixie
+
+Begin Doc
+
+ These Dixieland grooves are great for songs like "Bill Bailey". The 
+ Time is set to 4, so if you have a 2/4 piece double the tempo. 
+ This rhythm works best with tempos around 200.    
+ This might be a bit busy, if so you're free to make changes!
+ 
+End
+
+Author Bob van der Poel
+
+SeqClear
+Time 4
+Timesig 4 4
+Include stdpats
+
+///////////////////////////////
+// Pattern definitions
+
+Begin Drum Define
+	D12+3  D13; 2.5 0 90 
+End
+
+Begin Chord Define
+	Swing1         C1234 ; 2.5 8 80 
+End
+
+
+//////////////////////////////////////////////////////////
+// Dixie
+
+
+SeqSize 4
+	
+Begin Drum-Snare
+	Sequence	D12+3
+	Tone  SnareDrum1
+	Rvolume 10
+	Rskip 20
+	Volume pp
+End	
+
+Begin Drum-Kick
+	Sequence	D13
+	Tone KickDrum1
+	Rvolume 10
+	Rskip 10
+	Volume p	
+End
+
+Begin Drum-HH
+	Sequence	D4
+	Tone OpenHiHat
+	Rvolume 10
+	Rskip 5
+	Rtime 10
+	Volume mp
+End
+
+
+Begin Chord
+	Sequence	Swing1	/	/	C1234
+	Invert		0 1 0 1
+	SeqRnd On
+	Voice Honky-TonkPiano
+	Strum 3
+	Octave 5
+	Volume mp
+	Articulate 99
+End
+
+Begin Bass
+	Voice Tuba
+	Sequence	z	z	z	B13
+	Octave 3
+	Volume p
+	Rvolume 10
+	Rtime 10
+	Articulate 85
+End
+	
+Begin Walk
+	Voice $_Bass_Voice
+	Octave $_Bass_Octave
+	Sequence	W1234	/	/	z
+	Articulate 85
+	Volume p
+	Rskip 5
+	Rvolume 10
+	Rtime 10
+End
+
+Begin Arpeggio
+	Sequence	A16 	/	/	 A8
+	SeqRnd On
+	Volume p
+	Voice Banjo
+	Articulate 99
+	Harmony Open
+	Rskip 20
+	Octave 5
+End
+
+DefGroove Dixie   Complete with arpeggiating banjo.
+
+///////////////////////////////////////////////////
+// Dixie1
+// Alternate, swap bass/walk bars
+
+Groove Dixie
+
+Bass Sequence	B13	/	/	z
+Walk Sequence	z	/	/	W1234
+
+DefGroove Dixie1    Bass/walk variation.
+
+////////////////////////////////////////////////////
+// Dixie2
+// Alternate with slower arp
+
+Groove Dixie
+
+Arpeggio Sequence	A8 / / A4
+
+Begin Chord-Banjo
+	Sequence	L2 	 C1234
+	Invert 0 1 2 3
+	SeqRnd On
+	Volume pp
+	Voice Banjo
+	Octave 5
+	Articulate 50
+End
+
+DefGroove Dixie2   The arpeggio has been slowed down and a \
+                   stumming banjo has been added. Use this for \
+                   repeat endings, etc.
+	
+//////////////////////////////////
+// Dixie3
+// A bit calmer version
+
+Groove Dixie
+	
+Drum-Snare   Sequence   D13   D1234
+Drum-HH      Sequence   D1
+
+Begin Chord
+	Sequence	L2
+	Invert		0 1 0 1
+	SeqRnd On
+	Octave 5
+	Articulate 80
+End
+
+Begin Chord-Guitar
+	Sequence	L2	/  C1234  /
+	Invert		0 0 1 1
+	SeqRnd On
+	Voice JazzGuitar
+	Octave 6
+	Volume p
+	Articulate 90
+End
+
+Bass   Sequence	  B13   /  B11  z
+Walk   Sequence   z     z  z    W1234
+
+Arpeggio  Sequence  A2  A4  z  z
+
+DefGroove Dixie3   A more gentle attempt.
+
+//////////////
+
+Groove Dixie
+
+Arpeggio Sequence -
+Begin Chord-Banjo
+	Sequence   C1234  Swing1
+	Strum 10
+	Direction Both
+	Voice Banjo
+	Volume p
+	Octave 5
+	Articulate 90
+End
+
+DefGroove DixieStrum  Strumming banjo and piano. No apreggiating.
+
+//////////////////////////////////////////////////
+// DixieEnd
+
+Groove Dixie
+
+Drum-Snare   Sequence   D13  /  D1 /
+Drum-Kick    Sequence	D13  /  D1 /
+Drum-HH      Sequence   D4   D13  D1 /
+Chord        Sequence   C1234  /  L2  C1
+Bass         Sequence   B13  B11   B13   B11
+Walk         Sequence   -
+Arpeggio     Sequence   A16   A8   A4   A2
+
+DefGroove DixieEnd   Straight ending.
+
+

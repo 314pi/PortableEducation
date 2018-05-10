@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<resource version="2.3.0.1">
+  <object class="wxFrame" name="MainFrame" subclass="mainframe.MainFrameXRC">
+    <object class="wxMenuBar" name="frame_1_menubar">
+      <object class="wxMenu" name="file">
+        <object class="wxMenuItem" name="pathmanager">
+          <label>_Set Sword Paths...</label>
+        </object>
+        <object class="wxMenuItem" name="installmodule">
+          <label>Install books...</label>
+        </object>
+        <object class="wxMenuItem" name="manage_books">
+          <label>Manage books...</label>
+        </object>
+        <object class="wxMenuItem" name="fontchoice">
+          <label>Set fonts...</label>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenu" name="languages">
+          <label>&amp;Language</label>
+          <object class="wxMenu" name="bible_book_names">
+            <label>&amp;Bible book names</label>
+          </object>
+          <object class="separator"/>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenuItem" name="wxID_EXIT">
+          <label>_Exit</label>
+          <help>Quit this program</help>
+        </object>
+        <label>_File</label>
+      </object>
+      <object class="wxMenu" name="options">
+        <label>&amp;Display</label>
+      </object>
+      <object class="wxMenu" name="windows">
+        <object class="wxMenuItem" name="menu_default_layout">
+          <label>Default Layout</label>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenu" name="menu_toolbars">
+          <label>Toolbars</label>
+        </object>
+        <label>&amp;Windows</label>
+      </object>
+      <object class="wxMenu" name="gui_debug_menu">
+        <label>Debug</label>
+        <object class="wxMenuItem" name="gui_html_ide">
+          <label>Html Ide</label>
+        </object>
+        <object class="wxMenuItem" name="gui_widget_inspector">
+          <label>WI</label>
+          <accel>F6</accel>
+        </object>
+        <object class="wxMenuItem" name="gui_error_console">
+          <label>Error Console</label>
+        </object>
+        <object class="wxMenu" name="gui_locale_menu">
+          <object class="wxMenuItem" name="gui_locale_gather">
+            <label>gather</label>
+          </object>
+          <object class="wxMenuItem" name="gui_locale_diff">
+            <label>diff</label>
+          </object>
+          <object class="wxMenuItem" name="gui_locale_confirm">
+            <label>confirm</label>
+          </object>
+          <object class="wxMenuItem" name="gui_locale_compile">
+            <label>compile</label>
+          </object>
+          <object class="separator"/>
+          <object class="wxMenuItem" name="gui_locale_restart">
+            <label>Restart</label>
+          </object>
+          <label>Locale</label>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenuItem" name="gui_reload">
+          <label>Reload sections</label>
+        </object>
+        <object class="wxMenuItem" name="gui_reload_chrome">
+          <label>Reload w/ chrome</label>
+        </object>
+      </object>
+      <object class="wxMenu" name="help">
+        <label>_Help</label>
+        <object class="wxMenuItem" name="gui_website">
+          <label>BPBible Website</label>
+        </object>
+        <object class="wxMenuItem" name="gui_documentation">
+          <label>Documentation...</label>
+          <accel>F1</accel>
+        </object>
+        <object class="wxMenuItem" name="gui_issues">
+          <label>Report a problem...</label>
+        </object>
+        <object class="wxMenuItem" name="gui_books">
+          <label>Download books...</label>
+        </object>
+        <object class="separator"/>
+        <object class="wxMenuItem" name="wxID_ABOUT">
+          <label>_About...</label>
+          <help>Show about dialog</help>
+        </object>
+      </object>
+    </object>
+    <object class="wxStatusBar" name="statusbar">
+      <fields>1</fields>
+      <widths>-1</widths>
+      <style>wxST_SIZEGRIP</style>
+    </object>
+    <size>800, 600</size>
+    <title>Bible</title>
+    <style>wxDEFAULT_FRAME_STYLE|wxRESIZE_BORDER</style>
+  </object>
+</resource>

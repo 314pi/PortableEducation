@@ -1,0 +1,238 @@
+<?xml version="1.0" ?>
+<resource>
+  <object class="wxFrame" name="ManageTopicsFrame">
+    <object class="wxToolBar" name="toolbar">
+      <object class="tool" name="add_topic_tool">
+        <bitmap>..\graphics\application_form_add.png</bitmap>
+        <tooltip>New topic</tooltip>
+        <label>New topic</label>
+      </object>
+      <object class="tool" name="add_passage_tool">
+        <bitmap>..\graphics\book_add.png</bitmap>
+        <tooltip>Add passage</tooltip>
+        <label>Add passage</label>
+      </object>
+      <object class="separator"/>
+      <object class="tool" name="cut_tool">
+        <bitmap>..\graphics\edit-cut.png</bitmap>
+        <tooltip>Cut</tooltip>
+        <label>Cut</label>
+      </object>
+      <object class="tool" name="copy_tool">
+        <bitmap>..\graphics\edit-copy.png</bitmap>
+        <tooltip>Copy</tooltip>
+        <label>Copy</label>
+      </object>
+      <object class="tool" name="paste_tool">
+        <bitmap>..\graphics\edit-paste.png</bitmap>
+        <tooltip>Paste</tooltip>
+        <label>Paste</label>
+      </object>
+      <object class="tool" name="copy_text_tool">
+        <bitmap>..\graphics\edit-copy.png</bitmap>
+        <tooltip>Copy the topic as text to the clipboard for use in other applications.</tooltip>
+        <label>Export</label>
+      </object>
+      <object class="tool" name="sort_order_toggle_tool">
+        <bitmap>..\graphics\sc_sortup.png</bitmap>
+        <toggle>1</toggle>
+        <tooltip>Sorts the topic in passage order</tooltip>
+        <label>Sort</label>
+      </object>
+      <object class="tool" name="delete_tool">
+        <bitmap>..\graphics\delete.png</bitmap>
+        <tooltip>Delete</tooltip>
+        <label>Delete</label>
+      </object>
+      <object class="separator"/>
+      <object class="tool" name="undo_tool">
+        <bitmap>..\graphics\arrow_undo.png</bitmap>
+        <tooltip>Undo previous action</tooltip>
+        <label>Undo</label>
+      </object>
+      <object class="tool" name="redo_tool">
+        <bitmap>..\graphics\arrow_redo.png</bitmap>
+        <tooltip>Redoes the last undone action</tooltip>
+        <label>Redo</label>
+      </object>
+      <bitmapsize>16,16</bitmapsize>
+      <style>wxTB_FLAT|wxTB_TEXT|wxTB_NODIVIDER</style>
+    </object>
+    <object class="wxBoxSizer">
+      <object class="sizeritem">
+        <object class="wxSplitterWindow" name="splitter">
+          <orientation>vertical</orientation>
+          <sashpos>180</sashpos>
+          <style>wxSP_NOBORDER</style>
+          <object class="wxPanel">
+            <object class="wxBoxSizer">
+              <orient>wxVERTICAL</orient>
+              <object class="sizeritem">
+                <object class="unknown" name="topic_selector"/>
+                <flag>wxGROW</flag>
+              </object>
+              <object class="sizeritem">
+                <object class="unknown" name="topic_tree"/>
+                <option>1</option>
+                <flag>wxGROW</flag>
+              </object>
+            </object>
+          </object>
+          <object class="wxPanel" name="passage_list_pane">
+            <object class="wxBoxSizer">
+              <orient>wxVERTICAL</orient>
+              <object class="sizeritem">
+                <object class="wxSplitterWindow" name="passage_list_splitter">
+                  <object class="unknown" name="passage_list_ctrl"/>
+                  <object class="wxPanel" name="item_details_panel">
+                    <object class="wxBoxSizer">
+                      <orient>wxVERTICAL</orient>
+                    </object>
+                  </object>
+                  <orientation>horizontal</orientation>
+                  <style>wxSP_NOBORDER</style>
+                </object>
+                <option>1</option>
+                <flag>wxGROW</flag>
+              </object>
+            </object>
+            <style>wxNO_BORDER</style>
+          </object>
+        </object>
+        <option>5</option>
+        <flag>wxGROW</flag>
+      </object>
+      <orient>wxVERTICAL</orient>
+    </object>
+    <size>500,300</size>
+    <title>Manage Topics</title>
+  </object>
+  <object class="wxPanel" name="TopicDetailsPanel">
+    <object class="wxFlexGridSizer">
+      <object class="sizeritem">
+        <object class="wxStaticText" name="name_label">
+          <label>Name:</label>
+        </object>
+        <flag>wxALIGN_CENTRE_VERTICAL</flag>
+      </object>
+      <object class="sizeritem">
+        <object class="wxBoxSizer">
+          <object class="sizeritem">
+            <object class="wxTextCtrl" name="name_text"/>
+            <option>1</option>
+            <flag>wxGROW</flag>
+          </object>
+          <object class="spacer">
+            <size>6</size>
+          </object>
+          <object class="sizeritem">
+            <object class="wxCheckBox" name="display_tag_checkbox">
+              <label>Show tags</label>
+            </object>
+            <flag>wxALIGN_CENTRE_VERTICAL|wxFIXED_MINSIZE</flag>
+            <border>6</border>
+          </object>
+          <orient>wxHORIZONTAL</orient>
+          <object class="spacer">
+            <size>6</size>
+          </object>
+          <object class="sizeritem">
+            <object class="wxChoice" name="order_passages_choice"/>
+            <flag>wxFIXED_MINSIZE</flag>
+            <border>6</border>
+          </object>
+        </object>
+        <option>1</option>
+        <flag>wxGROW</flag>
+      </object>
+      <object class="sizeritem">
+        <object class="wxStaticText">
+          <label>Appearance:</label>
+        </object>
+      </object>
+      <object class="sizeritem">
+        <object class="unknown" name="tag_look"/>
+      </object>
+      <object class="sizeritem">
+        <object class="wxStaticText" name="description_label">
+          <label>Description:</label>
+        </object>
+        <option>1</option>
+        <flag>wxGROW</flag>
+        <border>6</border>
+      </object>
+      <object class="sizeritem">
+        <object class="wxTextCtrl" name="description_text">
+          <style>wxTE_MULTILINE</style>
+        </object>
+        <option>1</option>
+        <flag>wxGROW</flag>
+        <border>6</border>
+        <minsize>200,75</minsize>
+      </object>
+      <cols>2</cols>
+      <vgap>6</vgap>
+      <hgap>6</hgap>
+      <growablecols>1</growablecols>
+      <growablerows>2</growablerows>
+    </object>
+  </object>
+  <object class="wxPanel" name="PassageDetailsPanel">
+    <object class="wxBoxSizer">
+      <object class="sizeritem">
+        <object class="wxFlexGridSizer">
+          <object class="sizeritem">
+            <object class="wxStaticText">
+              <label>Passage:</label>
+            </object>
+            <border>6</border>
+          </object>
+          <object class="sizeritem">
+            <object class="wxTextCtrl" name="passage_text"/>
+            <option>1</option>
+            <flag>wxGROW</flag>
+            <border>6</border>
+          </object>
+          <object class="sizeritem">
+            <object class="wxStaticText">
+              <label>Comment:</label>
+            </object>
+            <border>6</border>
+          </object>
+          <object class="sizeritem">
+            <object class="wxTextCtrl" name="comment_text">
+              <style>wxTE_MULTILINE</style>
+            </object>
+            <option>1</option>
+            <flag>wxGROW</flag>
+            <border>6</border>
+          </object>
+          <cols>2</cols>
+          <rows>2</rows>
+          <vgap>6</vgap>
+          <hgap>6</hgap>
+          <growablecols>1</growablecols>
+          <growablerows>1</growablerows>
+        </object>
+        <option>1</option>
+        <flag>wxGROW|wxRIGHT</flag>
+        <border>6</border>
+      </object>
+      <object class="sizeritem">
+        <object class="wxBoxSizer">
+          <object class="sizeritem">
+            <object class="wxWebControl" name="passage_preview" subclass="gui.reference_display_frame.ReferenceDisplayFrame">
+              <style>wxSUNKEN_BORDER</style>
+            </object>
+            <option>1</option>
+            <flag>wxGROW</flag>
+          </object>
+          <orient>wxHORIZONTAL</orient>
+        </object>
+        <option>1</option>
+        <flag>wxGROW</flag>
+      </object>
+      <orient>wxHORIZONTAL</orient>
+    </object>
+  </object>
+</resource>

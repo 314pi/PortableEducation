@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<resource>
+  <object class="wxFrame" name="GuessVerseFrame">
+    <object class="wxPanel">
+      <object class="wxBoxSizer">
+        <orient>wxVERTICAL</orient>
+        <object class="sizeritem">
+          <object class="wxPanel">
+            <object class="wxBoxSizer">
+              <orient>wxHORIZONTAL</orient>
+              <object class="sizeritem">
+                <object class="wxWebControl" name="reference_frame" subclass="gui.reference_display_frame.PlainReferenceDisplayFrame">
+                </object>
+                <option>1</option>
+                <flag>wxEXPAND|wxGROW</flag>
+                <border>6</border>
+              </object>
+            </object>
+            <style>wxSUNKEN_BORDER</style>
+          </object>
+          <option>1</option>
+          <flag>wxALL|wxGROW</flag>
+          <border>6</border>
+          <minsize>350,200</minsize>
+        </object>
+        <object class="sizeritem">
+          <object class="wxBoxSizer">
+            <object class="sizeritem">
+              <object class="wxChoice" name="books"/>
+              <option>1</option>
+              <flag>wxGROW</flag>
+            </object>
+            <orient>wxVERTICAL</orient>
+          </object>
+          <option>0</option>
+          <flag>wxALL|wxGROW</flag>
+          <border>6</border>
+        </object>
+        <object class="sizeritem">
+          <object class="wxBoxSizer">
+            <object class="sizeritem">
+              <object class="wxButton" name="show_answer_button">
+                <label>&amp;Show answer</label>
+              </object>
+              <flag>wxBOTTOM|wxLEFT</flag>
+              <border>6</border>
+            </object>
+            <object class="spacer">
+              <option>1</option>
+              <flag>wxGROW</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxButton" name="guess_button">
+                <label>&amp;Guess</label>
+                <default>1</default>
+              </object>
+              <flag>wxBOTTOM|wxRIGHT|wxALIGN_RIGHT</flag>
+              <border>6</border>
+            </object>
+            <orient>wxHORIZONTAL</orient>
+          </object>
+          <flag>wxGROW</flag>
+        </object>
+      </object>
+    </object>
+    <title>Guess the Verse</title>
+    <style>wxDEFAULT_FRAME_STYLE</style>
+  </object>
+</resource>

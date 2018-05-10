@@ -1,0 +1,244 @@
+
+// jazzguitar
+
+Begin Doc
+ For jazz ballads. This has ONLY a guitar (well, expect for the sustained
+ versions). Mostly chords, but some
+ bass and arpeggio is included. The song "Django" is a bit of a demo.
+End
+
+Author Bob van der Poel
+
+NewSet SustainVoice TremoloStrings
+
+Begin DocVar
+	  SustainVoice  Voice for the sustained versions (default=TremoloStrings).
+End
+
+SeqClear
+Time 4
+Timesig 4 4
+Include stdpats
+
+////////// Additional defines
+
+
+////////////////////////
+// Basic
+
+
+SeqSize 4
+
+Begin Chord
+	Voice JazzGuitar
+	Articulate 95
+	Voicing Mode=Optimal
+	Volume m
+	Octave 5
+	Sequence C1234
+End
+
+Begin Bass
+	Voice $_Chord_Voice
+	Articulate 105
+	Octave 3
+	Volume mf
+	Sequence B13 / / {1 2 1 90; 2 8 3 80; 3 2 5 90}
+End
+
+
+DefGroove JazzGuitar     A very basic 4 to the bar accompaniment.
+
+////////// Same, but with walking bass
+
+Groove JazzGuitar
+
+Bass Sequence -
+
+Begin Walk
+	Voice $_Bass_Voice
+	Articulate $_Bass_Articulate
+	Octave $_Bass_Octave
+	Volume $_Bass_Volume
+	Sequence W1234  /   /   W13
+	Direction Down
+End
+
+DefGroove JazzGuitarWalk     Changes the bass pattern to walking.
+
+/// Add in arpeggios every 4th bar
+
+Groove JazzGuitar
+
+Chord Volume +0 / / -30   /// cut volume for chord on 4th bar
+
+Begin Arpeggio
+	Voice $_Chord_Voice
+	Articulate 140
+	Rskip 10
+	Octave 5
+	Volume mf
+	Direction Down
+	Range .9
+	Sequence z / / A8
+End
+
+DefGroove JazzGuitar1       Our basic pattern with arpeggios every 4th bar.
+
+Groove JazzGuitarWalk
+	Chord    Groove  JazzGuitar1
+	Arpeggio Groove  JazzGuitar1
+DefGroove JazzGuitar1Walk   Walking bass with arpeggios every 4th bar.
+
+/// A bit of syncopation in the chords
+
+Groove JazzGuitar
+
+Begin Chord
+	Sequence  {C1234; C24 Shift .66}
+	Strum 5
+	Articulate 80
+	Direction Both
+End
+
+DefGroove JazzGuitar2   Basic pattern with more strum and syncopation.
+
+Groove JazzGuitar2
+	Bass Sequence -
+	Walk Groove JazzGuitarWalk
+DefGroove JazzGuitar2Walk  The strum pattern with walking bass
+
+/////////
+
+Groove JazzGuitar2
+
+Chord Volume +0 / / -30
+Begin Arpeggio
+	Groove JazzGuitar1
+	Octave 5
+	Sequence z / / {A4; A2 Shift 1.66}
+End
+
+DefGroove JazzGuitar3     Add arpeggios every 4 bars to the syncopated strumming.
+
+Groove JazzGuitar3
+	Bass Sequence -
+	Walk Groove JazzGuitarWalk
+DefGroove JazzGuitar3Walk  Aprpeggios and walking bass.
+
+////////////////////////////
+//// Sustained versions
+
+Groove JazzGuitar
+Begin Chord-Sus
+	Voice      $SustainVoice
+	Sequence   {1 1 96 0 90 0 * 4}
+	Voicing Mode=Optimal
+	Octave     5
+	Articulate 100
+	Unify On
+	Volume     p   
+End
+
+DefGroove JazzGuitarSus    Sustained strings added to basic pattern.
+
+Groove JazzGuitar1
+Chord-Sus Groove JazzGuitarSus
+DefGroove JazzGuitar1Sus       Sustained strings added to JazzGuitar1.
+
+Groove JazzGuitar2
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitar2Sus      Sustained strings added to JazzGuitar2.
+
+Groove JazzGuitar3
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitar3Sus      Sustained strings added to JazzGuitar3
+
+Groove JazzGuitarWalk
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitarWalkSus   Sustained strings added to JazzGuitarWalk.
+
+Groove JazzGuitar1Walk
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitar1WalkSus   Sustained strings added to JazzGuitarWalk1.
+
+Groove JazzGuitar2Walk
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitar2WalkSus    Sustained strings added to JazzGuitarWalk2.
+
+Groove JazzGuitar3Walk
+Chord-Sus Groove  JazzGuitarSus
+DefGroove JazzGuitar3WalkSus    Sustained strings added to JazzGuitarWalk3.
+
+//////////////////////////////
+//////  Intro
+
+Groove JazzGuitar
+
+Begin Chord
+	Sequence z z z L1
+	Strum 15
+	Volume mp
+	Octave 6
+	Articulate 150
+End
+
+Begin Arpeggio
+	Voice $_Chord_Voice
+	Volume m
+	Octave 5
+	Direction Up
+	Range 1.9
+	Articulate 120
+	Harmony Open
+	Sequence A8 / / z
+End
+
+Bass Sequence B13 / / {1 1 1 90}
+
+DefGroove JazzGuitarIntro  A 4 bar, arpeggiating introduction.
+
+/// a 2nd intro. We use the basic pattern, but add a little bass run
+/// in the 4th bar.
+
+Groove JazzGuitar
+
+Chord  Sequence * * * C12
+Bass   Sequence * * * {1 4 1+ 90;2 8 5 90; 2.5 4. 3 90; 3 4 1 90; 4 4 1 90  }
+
+
+DefGroove JazzGuitar1Intro   A 4 bar intro with a bass run on bar 4.
+
+	  
+///////////////
+//// Endings
+
+Groove JazzGuitar
+SeqSize 2
+
+Begin Chord
+	Sequence {1 8 90; 1.5 8 80; 2 8 90; 2.5 8 80; 3 4 80; 4 4 70} \
+	         {1 1 80 70 60 50; 3 1 70 60 50 40}
+	Direction Up
+	Strum    0    30
+End
+
+Begin Bass
+	Sequence B13 B1
+End
+
+DefGroove JazzGuitarEnd  Soft, 2 bar ending.
+
+
+Groove JazzGuitar
+SeqSize 1
+
+Begin Chord
+	Sequence {1 8 90; 1.5 8 84; 2 8 80; 2.5 8 70; 3 2 66}
+End
+
+Begin Bass
+	Sequence {1 2. 1 90}
+End
+
+DefGroove JazzGuitarEnd1  Soft, 1 bar ending.

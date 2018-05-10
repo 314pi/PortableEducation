@@ -1,0 +1,130 @@
+
+// lullaby
+
+Doc Gentle, soft lullaby in 4. Written for "Good Night". 
+  
+Author Bob van der Poel
+
+Begin DocVar
+	  ChordVoice  Voice used in Chord tracks (defaults to JazzGuitar).
+	  ChordOctave Octave for Chord track (default 4)
+End
+
+NewSet ChordVoice JazzGuitar
+NewSet ChordOctave 4
+
+
+SeqClear
+Time 4
+Timesig 4 4
+Include stdpats
+
+///////// Additional Patterns
+
+
+////////// Ballad
+
+SeqSize 1
+
+Begin Chord
+	  Voice $ChordVoice
+	  Volume m
+	  Octave $ChordOctave
+	  Voicing Mode=Optimal
+	  Articulate 110
+	  Rtime 3
+	  Rvolume 3
+	  Sequence {1 4 90 0; 2 4 0 90 0; 3 4 0 0 90 0; 4 4 0 90 0}
+	  Accent 1 20 3 10
+End
+
+DefGroove Lullaby    Just a solo guitar in 4.
+
+
+Begin Bass
+	  Voice JazzGuitar
+	  Volume mp
+	  Octave 2
+	  Rtime 2
+	  Rvolume 3
+	  Articulate 90
+	  Sequence B13
+End
+
+DefGroove  Lullaby1   Adds in a bit of bass.
+
+Groove Lullaby
+
+Begin Walk
+	  Voice JazzGuitar
+	  Volume mp
+	  Octave 3
+	  Rtime 2
+	  Rvolume 3
+	  Articulate 110
+	  Direction Up
+	  Sequence W8
+	  Rskip 40
+End
+
+DefGroove LullabyWalk   Adds an 8th note walking bass line.
+
+
+///////////////////
+//// Sustained
+
+Groove Lullaby
+
+Begin Chord-Sus
+	  Voice SlowStrings
+	  Octave 5
+	  Volume p
+	  Voicing Mode=Optimal
+	  Articulate 100
+	  Unify On
+	  Sequence {1 1 90 0 90 0 * 2}
+End
+
+DefGroove LullabySus   Add some sustained strings to our guitar.
+
+Groove LullabySus
+Bass Groove Lullaby1
+DefGroove Lullaby1Sus   A bit of bass with the strings.
+
+Groove LullabySus
+Walk Groove LullabyWalk
+DefGroove LullabyWalkSus  Strings and walking bass.
+
+
+///////////////////
+//// Intro
+
+Groove Lullaby1Sus
+
+SeqSize 4
+
+Begin Chord
+	  Volume -30
+	  Sequence  * * * {1 1 90 0}
+End
+
+Begin Bass
+	  Volume +20
+	  Sequence  * * * B1
+End
+
+Begin Chord-Sus 
+	  Volume +40
+End
+
+DefGroove LullabyIntro
+
+
+///////////////////
+//// Ending
+
+Groove Lullaby
+
+Chord Sequence  {1 1 90 0 * 2}
+
+DefGroove LullabyEnd    Two half notes on the guitar.

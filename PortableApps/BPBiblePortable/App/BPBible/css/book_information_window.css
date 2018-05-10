@@ -1,0 +1,34 @@
+body {
+	background-color: white;
+}
+
+table {
+	width: 100%;
+}
+
+.module_information_key, .config_file_entries_combo {
+/*	background-color: green;*/
+	width: 0px;
+	padding-right: .4em;
+	padding-top: 3px;
+
+	vertical-align: top;
+	text-align: right;
+}
+.module_information_value {
+	border: 1px solid #eee;
+	-moz-border-radius: 3px;
+	padding: 3px;
+}
+
+.module_information_key:after {
+	content: ":";
+}
+
+/*
+This scrunches the combo box, but makes the rest of the key fields not take up
+too much space.
+*/
+#config_file_entries {
+	max-width: 100px;
+}

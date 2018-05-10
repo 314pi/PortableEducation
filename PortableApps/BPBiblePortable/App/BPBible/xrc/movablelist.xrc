@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="cp1252"?>
+<resource>
+  
+  
+  <object class="wxPanel" name="MovableListPanel">
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <object class="wxBoxSizer">
+          <orient>wxHORIZONTAL</orient>
+          <object class="sizeritem">
+            <object class="wxListBox" name="gui_templates">
+              <style/>
+              <content/>
+            </object>
+            <option>1</option>
+            <flag>wxGROW|wxALL</flag>
+            <border>6</border>
+            <minsize>100,1</minsize>
+          </object>
+          <object class="sizeritem">
+            <object class="wxPanel">
+              <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="move_top">
+                    <bitmap>..\graphics\bullet_arrow_top.png</bitmap>
+                    <tooltip>Move item to top</tooltip>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="move_up">
+                    <bitmap>..\graphics\bullet_arrow_up.png</bitmap>
+                    <tooltip>Move item up</tooltip>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="move_down">
+                    <bitmap>..\graphics\bullet_arrow_down.png</bitmap>
+                    <tooltip>Move item down</tooltip>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="move_bottom">
+                    <bitmap>..\graphics\bullet_arrow_bottom.png</bitmap>
+                    <tooltip>Move item to bottom</tooltip>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,5</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="gui_add">
+                    <bitmap>..\graphics\application_form_add.png</bitmap>
+                    <tooltip>Add a new item</tooltip>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="gui_edit">
+                    <bitmap>..\graphics\application_form_edit.png</bitmap>
+                    <tooltip>Edit this item</tooltip>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="gui_remove">
+                    <bitmap>..\graphics\application_form_delete.png</bitmap>
+                    <tooltip>Remove this item</tooltip>
+                  </object>
+                </object>
+              </object>
+            </object>
+            <flag>wxTOP|wxBOTTOM|wxGROW</flag>
+            <border>5</border>
+          </object>
+        </object>
+        <option>1</option>
+        <flag>wxGROW</flag>
+      </object>
+    </object>
+  </object>
+</resource>

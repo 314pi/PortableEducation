@@ -1,0 +1,44 @@
+
+// metronome3
+
+Begin Doc
+
+ Simple beats to put at the start of a piece. This file has 
+  only 3/4 times.
+
+End
+
+Author Bob van der Poel
+
+SeqClear
+Time 3
+Timesig 3 4
+
+Begin Drum Define
+	M1      1 0 90
+	M23     M1 Shift 1; M1 Shift 2
+End
+
+/////////////////////////////////////////
+////// Metronome3
+////// A 3/4 metronome. 
+
+SeqSize 1
+
+
+Begin Drum-Low
+	Sequence M1
+	Tone LowWoodBlock
+	Volume mp
+End
+
+Begin Drum-Hi
+	Sequence M23
+	Tone HighWoodBlock
+	Volume mp
+End
+
+DefGroove Metronome3      A single bar waltz introduction.
+
+
+
